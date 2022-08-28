@@ -1,0 +1,16 @@
+ <launch>
+   <arg name="gripper" default="false"/>
+   <arg name="robot_name" default="unity"/>
+
+   <remap from="/$(arg robot_name)/unity_ur10_joint_states" to="/unity_ur10_joint_states"/>
+   <remap from="/$(arg robot_name)/velocity_command" to="/velocity_command"/>
+
+   <group ns="$(arg robot_name)">
+      <group unless="$(arg gripper)">
+         <node name="unity_hardware_interface" pkg="unity_ros_control" type="unity_hardware_interface" output="screen"/>
+      </group>
+      <group if="$(arg gripper)">
+         <node name="unity_hardware_interface" pkg="unity_ros_control" type="unity_hardware_interface_with_gripper" output="screen"/>
+      </group>
+   </group>
+ </launch>
