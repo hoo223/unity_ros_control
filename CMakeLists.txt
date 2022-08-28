@@ -117,6 +117,9 @@ catkin_package(
 add_executable(unity_hardware_interface src/unity_hardware_interface_node.cpp)
 target_link_libraries(unity_hardware_interface ${catkin_LIBRARIES})
 
+add_executable(unity_hardware_interface_with_gripper src/unity_hardware_interface_node_with_gripper.cpp)
+target_link_libraries(unity_hardware_interface_with_gripper ${catkin_LIBRARIES})
+
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
